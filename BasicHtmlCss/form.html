@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link href="content/loginStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h2>Registration</h2>
+        <form action="" name="registration">
+
+            <label for="firstname">First Name</label>
+            <input type="text" name="firstname" id="firstname" placeholder="Enter Name" />
+
+            <label for="lastname">Last Name</label>
+            <input type="text" name="lastname" id="lastname" placeholder="Enter Name" />
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Enter Valid Email" />
+
+            <label for="pass">Password</label>
+            <input type="password" name="password" id="pass" placeholder="Enter Password" />
+
+            <label for="date">Date</label>
+            <input type="text" name="date" id="date" placeholder="Enter Date" />
+
+            <button type="submit">Register</button>
+           <a href="Index.html">Index</a>
+        </form>
+    </div>
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/jquery.validate.min.js"></script>
+
+    <script src="Scripts/jquery-ui.js"></script>
+
+    <script>
+
+        const card = document.querySelector('a');
+
+        card.addEventListener('dblclick', function (e) {
+            card.classList.toggle('a');
+        });
+
+        $('#date').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showAnim: "fadeIn",
+            dateFormate:"d MM, y"
+        });
+        $(function () {
+
+            $("form").validate({
+
+                rules: {
+
+                    firstname: "required",
+                    lastname: "required",
+                    email: {
+                        required: true,
+
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    date: {
+                        required: true
+                    }
+                },
+                // Specify validation error messages
+                messages: {
+                    firstname: "Please enter your firstname",
+                    lastname: "Please enter your lastname",
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 5 characters long"
+                    },
+                    email: "Please enter a valid email address",
+                    date: "select date from calendar"
+                },
+
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
